@@ -39,6 +39,9 @@ function forEach(array, cb) {
     // Itera sobre la matriz "array" y pasa los valores al callback uno por uno
     // Pista: Estarás invocando a `cb` varias veces (una por cada valor en la matriz)
     //Tu código:
+    array.forEach(function(element) {
+        cb(element)
+    })
 }
 
 function map(array, cb) {
@@ -46,12 +49,71 @@ function map(array, cb) {
     // Itera sobre cada valor en "array", pásalo a `cb` y luego ubicar el valor devuelto por `cb` en un nuevo array
     // El nuevo array debe tener la misma longitud que el array del argumento
     //Tu código:
+    let nuevoArray = [];
+    for (let i = 0; i < array.length; i++) {
+        let valor = cb(array[i]);
+        nuevoArray.push(valor);
+        /** A R R E G L O S */
+        //OTRA FORMA DE INSERTAR EN UN ARREGLO: nuevoArray[i] = valor
+        // donde i es la posiscion en la que estoy insertando mi elemento dentro del areglo
+        /*por ej, 
+        nuevoArray[0] = 'valor 0'
+        nuevoArray[2] = 'valor 2'
+        mi arreglo queda: nuevoArray = ['valor 0',undefined,'valor 2']
+
+        ---------------------
+        Con push se inserta en la ultima posicion libre
+        nuevoArray.push('valor 0');
+        nuevoArray.push('valor 2');
+        mi arreglo queda: nuevoArray = ['valor 0','valor 2']
+        */
+
+        /** O B J E T O S */
+        // objeto[dato] = "algo" (dato es una variable de tipo string que me pasaron por ej, por parametro)
+        /*ej:
+        let dato = "nombre" (dato es una variable, puede ser pasada por parametro)
+         objeto = {
+            nombre: "algo"
+        }
+        */
+
+        // objeto['dato'] = "algo"  (dato es el NOMBRE REAL del dato q le paso a mi objeto)
+        /*ej:
+         objeto = {
+            dato: "algo"
+        }
+        */
+
+        //usando un map
+        /* 
+        return array.map(function(element)){
+            return cb(element);
+        }
+        */
+
+
+    }
+    return nuevoArray;
 }
 
 function filter(array) {
     //Filtrar todos los elementos del array que comiencen con la letra "a".
     //Devolver un nuevo array con los elementos que cumplen la condición
     //Tu código:
+    let nuevoArray = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i][0] === 'a') {
+            nuevoArray.push(array[i])
+        }
+    }
+    return nuevoArray;
+
+    // usando metodo filter
+    /* return array.filter(function(element){
+        if(element[0] === 'a'){
+            return element;
+        }
+    }) */
 }
 
 // No modificar nada debajo de esta línea
